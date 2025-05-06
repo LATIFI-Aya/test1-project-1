@@ -47,6 +47,7 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
             email,
             password: hashedPassword,
             profileImagePath, //path of the uploaded image
+            role: email === "aya@gmail.com" ? "admin" : "user" //sets admin role for specific email
         });
         //Saving the new user 
         await newUser.save();

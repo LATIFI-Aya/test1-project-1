@@ -9,6 +9,8 @@ import PropertyList from './pages/PropertyList';
 import ReservationList from './pages/ReservationList';
 import WishList from './pages/WishList';
 import Search from './pages/Search';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 export default function App() {
   return (
@@ -25,7 +27,13 @@ export default function App() {
           <Route path="/:userId/wishlist" element={<WishList />} />
           <Route path="/:userId/listing" element={<PropertyList />} />
           <Route path="/:userId/reservations" element={<ReservationList />} />
-          
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+          {/* Add this 404 route at the end */}
+          <Route path="*" element={<div className="flex justify-center items-center h-screen">
+            <h1 className="text-2xl font-bold">404 - Page Not Found</h1>
+          </div>} />
         </Routes>
       </div>
     </BrowserRouter>

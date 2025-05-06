@@ -18,7 +18,8 @@ const listingSchema = new mongoose.Schema({
     listingPhotoPaths: [{ type: String}], //Storing Photo URL
     title:{type: String, required: true},
     description:{type: String, required: true}, 
-    price:{type: Number, required: true}
+    price:{type: Number, required: true},
+    status: {type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending'}
 },
 {timestamps: true}
 );
