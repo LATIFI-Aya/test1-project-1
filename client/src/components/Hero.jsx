@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
             {/* left */}
             <div className='flex justify-center flex-1 flex-col gap-y-8 xl:max-w-[555px] relative'>
                 <h1 className='h1'>Invist in <span className='text-secondary'>Your Future</span> With confidence </h1>
-                <p> <span className="block text-4xl font-bold text-secondary mb-2">Doorway Dreams</span> is your trusted partner in real estate, helping you invest in your future with confidence. We offer carefully curated listings, insightful guidance, and a seamless experience designed to match your goals. Whether you're looking for your first home or your next investment opportunity, Doorway Dreams opens the door to lasting value and peace of mind.</p>
+                <p> <span className="font-semibold text-gray-800">Doorway Dreams</span> is your trusted partner in real estate, helping you invest in your future with confidence. We offer carefully curated listings, insightful guidance, and a seamless experience designed to match your goals. Whether you're looking for your first home or your next investment opportunity, Doorway Dreams opens the door to lasting value and peace of mind.</p>
                 <div className='flex gap-3'>
                     <a href="#listing" className='btn-dark flexCenter rounded-full '>Explore Properties</a>
                     {user ? (

@@ -168,7 +168,7 @@ import Footer from '../components/Footer';
                     </div>
                 </div>
                 {/*Book Button*/}
-                <button type="submit" onClick={handleSubmit} className='btn-secondary rounded-full flexCenter gap-x-2 capitalize' disabled={isOwner} >{isOwner ? "You can book your own property": ""} </button>
+                <button type="submit" onClick={handleSubmit} className='btn-secondary rounded-full flexCenter gap-x-2 capitalize' disabled={isOwner} > {isOwner ? "You can book your own property": "Book Now"} </button>
             </div>
         </div>
        {/* Right {image gallery} */ }
