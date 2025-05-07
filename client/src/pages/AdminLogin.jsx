@@ -76,7 +76,7 @@ const AdminLogin = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`w-full bg-secondary text-white p-2 rounded hover:bg-secondary ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             {loading ? 'Logging in...' : 'Login'}
           </button>
