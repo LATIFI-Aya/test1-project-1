@@ -16,13 +16,15 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  // Whitelist specific reducers if needed
+  // whitelist: ['auth']
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
-    auth: persistedReducer // Changed this line to nest under 'auth' key
+    auth: persistedReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
