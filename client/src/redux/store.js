@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import state from "./state";
+import authReducer from "./authSlice";
 
 const persistConfig = {
   key: "root",
@@ -18,10 +18,12 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, state);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    auth: persistedReducer // Changed this line to nest under 'auth' key
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

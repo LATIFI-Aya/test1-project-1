@@ -7,7 +7,7 @@ import User from '../models/User.js';
 
 const router = express.Router();
 
-// ADMIN LOGIN ROUTE - MUST COME BEFORE MIDDLEWARE
+// ADMIN LOGIN ROUTE - NO MIDDLEWARE NEEDED HERE
 router.post('/auth/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -32,7 +32,7 @@ router.post('/auth/login', async (req, res) => {
                 email: user.email
             }, 
             process.env.JWT_SECRET, 
-            { expiresIn: '1h' }
+            { expiresIn: '48h' }
         );
 
         // 4. Return response
@@ -80,7 +80,7 @@ const verifyAdminToken = (req, res, next) => {
     }
 };
 
-// Apply to all routes below
+// Apply the middleware to all routes that require admin access
 router.use(verifyAdminToken);
 
 // Protected Admin Routes
@@ -118,61 +118,4 @@ router.get('/bookings', async (req, res) => {
     }
 });
 
-export default router;
-
-{/*import express from 'express';
-import Listing from '../models/Listing.js';
-import Booking from '../models/Booking.js';
-import User from '../models/User.js';
-
-const router = express.Router();
-
-// Middleware to check if user is admin
-const isAdmin = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.user.id);
-        if(user.role !== 'admin') {
-            return res.status(403).json({ message: "Access denied. Admin only." });
-        }
-        next();
-    } catch(err) {
-        res.status(500).json({ error: err.message });
-    }
-};
-
-// Get all pending properties
-router.get('/properties/pending', isAdmin, async (req, res) => {
-    try {
-        const listings = await Listing.find({ status: 'pending' }).populate('creator');
-        res.status(200).json(listings);
-    } catch(err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-// Approve/reject property
-router.patch('/properties/:id', isAdmin, async (req, res) => {
-    try {
-        const { status } = req.body;
-        const listing = await Listing.findByIdAndUpdate(
-            req.params.id, 
-            { status },
-            { new: true }
-        );
-        res.status(200).json(listing);
-    } catch(err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-// Get all bookings
-router.get('/bookings', isAdmin, async (req, res) => {
-    try {
-        const bookings = await Booking.find().populate('customerId hostId listingId');
-        res.status(200).json(bookings);
-    } catch(err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-export default router;*/}
+export default router;  // Only one export default here
